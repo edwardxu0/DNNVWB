@@ -107,7 +107,7 @@ def dispatch(prog, max_memory=-1, timeout=-1, log_period=2):
                 logger.error(
                     "Out of Memory (terminating process): %s > %s",
                     memory_repr(mem_usage),
-                    memory_repr(mem_usage),
+                    max_memory,
                 )
                 terminate()
                 break
@@ -145,7 +145,7 @@ def main(args):
         logger.setLevel(logging.INFO)
         log_period = 2  # seconds
     elif args.quiet:
-        logger.setLevel(logging.ERROR)
+        logger.setLevel(logging.INFO)
         log_period = float("inf")
     else:
         logger.setLevel(logging.INFO)
